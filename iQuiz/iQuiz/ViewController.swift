@@ -13,18 +13,20 @@ class ViewController: UIViewController, UITableViewDataSource{
     class Subject {
         var title : String
         var description : String
+        var image : UIImage
         
-        init(subjectTitle : String, description : String) {
+        init(subjectTitle : String, description : String, img : UIImage) {
             self.title = subjectTitle
             self.description = description
+            self.image = img
         }
     }
     
     @IBOutlet weak var tblSubjects: UITableView!
     let subjects : [Subject] = [
-        Subject(subjectTitle: "Mathematics", description: "numbers and stuff"),
-        Subject(subjectTitle: "Marvel Super Heroes", description: "spiderman's world"),
-        Subject(subjectTitle: "Science", description: "chemistry, biology, etc")
+        Subject(subjectTitle: "Mathematics", description: "numbers and stuff", img: #imageLiteral(resourceName: "math")),
+        Subject(subjectTitle: "Marvel Super Heroes", description: "spiderman's world", img: #imageLiteral(resourceName: "marvel.jpg")),
+        Subject(subjectTitle: "Science", description: "chemistry, biology, etc", img: #imageLiteral(resourceName: "science.jpg"))
     ]
     
     
@@ -41,11 +43,18 @@ class ViewController: UIViewController, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubjectCell", for: indexPath) as! SubjectTableViewCell
         cell.subjectTitle?.text = subject.title
         cell.subjectDescription?.text = subject.description
+        cell.subjectImageView?.image = subject.image
         return cell
     }
     
-    @IBOutlet weak var SettingsBtn: UIToolbar!
     
+    @IBAction func settingsPushed(_ sender: Any) {
+        let alert = UIAlertController(title: "Settings Alert", message: "Settings go here", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

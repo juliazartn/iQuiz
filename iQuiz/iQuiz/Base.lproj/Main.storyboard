@@ -67,6 +67,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="subjectDescription" destination="GZA-KL-gva" id="tzP-3f-l5F"/>
+                                            <outlet property="subjectImageView" destination="fv5-3z-t0q" id="gaE-n4-2n5"/>
                                             <outlet property="subjectTitle" destination="Dwu-eq-TIf" id="N45-li-61x"/>
                                         </connections>
                                     </tableViewCell>
@@ -76,7 +77,11 @@
                                 <rect key="frame" x="16" y="29" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Settings" id="58v-7h-8v1"/>
+                                    <barButtonItem title="Settings" id="58v-7h-8v1">
+                                        <connections>
+                                            <action selector="settingsPushed:" destination="BYZ-38-t0r" id="Mof-BQ-Y4x"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -84,7 +89,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="SettingsBtn" destination="I7N-no-Hyf" id="v93-BO-qwf"/>
                         <outlet property="tblSubjects" destination="avI-Bl-GSg" id="2gX-or-haT"/>
                     </connections>
                 </viewController>

@@ -69,9 +69,9 @@ class QuestionViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let mainView = segue.destination as! ViewController
-        mainView.questions = questions
+        let answerView = segue.destination as! AnswerViewController
+        answerView.questions = questions
+        answerView.questionIndex = questionIndex
+        answerView.selectedAnswerText = (allOptionButtons[chosenButtonNumber!].titleLabel?.text)!
     }
-    
-
 }

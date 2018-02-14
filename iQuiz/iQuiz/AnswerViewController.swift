@@ -10,8 +10,27 @@ import UIKit
 
 class AnswerViewController: UIViewController {
 
+    var questions : [Question] = []
+    var questionIndex : Int = 0
+    var selectedAnswerText : String? = nil
+    
+    @IBOutlet weak var questionTextLabel: UILabel!
+    @IBOutlet weak var correctAnswerTextLabel: UILabel!
+    @IBOutlet weak var outcomeTextLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        questionTextLabel.text = questions[questionIndex].question
+        correctAnswerTextLabel.text = questions[questionIndex].correctAnswer
+        
+        if questions[questionIndex].correctAnswer == selectedAnswerText {
+            outcomeTextLabel.textColor = UIColor.green
+            outcomeTextLabel.text = "Correct!"
+        } else {
+            outcomeTextLabel.textColor = UIColor.red
+            outcomeTextLabel.text = "Wrong :("
+        }
 
         // Do any additional setup after loading the view.
     }

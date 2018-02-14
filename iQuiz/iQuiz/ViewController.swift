@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let questionView = segue.destination as! QuestionViewController
         let subject = subjects![(tblSubjects.indexPathForSelectedRow?.row)!]
         questionView.questions = subject.questions
-        NSLog("preparing the questions: \(subject.questions)")
+//        NSLog("preparing the questions: \(subject.questions)")
 
     }
 

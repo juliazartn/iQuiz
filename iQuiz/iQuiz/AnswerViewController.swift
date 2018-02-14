@@ -35,20 +35,31 @@ class AnswerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        if questionIndex == questions.count - 1 {
+            NSLog("moving to finished segue")
+            self.performSegue(withIdentifier: "finishedSegue", sender: nil)
+        } else {
+            NSLog("moving to next question")
+            self.performSegue(withIdentifier: "anotherQuestionSegue", sender: nil)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "anotherQuestionSegue" {
+            let questionView = segue.destination as! QuestionViewController
+            questionView.questions = questions
+            questionView.questionIndex = questionIndex + 1
+        }
+        else {
+            let finishedView = segue.destination as! FinishedViewController
+//            finishedView.questions = questions
+        }
     }
-    */
-
 }

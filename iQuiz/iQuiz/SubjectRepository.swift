@@ -41,7 +41,8 @@ class SubjectRepository {
     }
     
     private let subjects : [Subject] = [
-        Subject(subjectTitle: "Mathematics", description: "numbers and stuff", img: #imageLiteral(resourceName: "math"), questionsArray : [Question(question: "What's 1 + 1", correctAnswer: "2", answerOptions: ["3", "-1", "4"])]),
+        Subject(subjectTitle: "Mathematics", description: "numbers and stuff", img: #imageLiteral(resourceName: "math"), questionsArray : [Question(question: "What's 1 + 1", correctAnswer: "2", answerOptions: ["3", "-1", "4"]),
+            Question(question: "What's the derivative of sin(x)?", correctAnswer: "cos(x)", answerOptions: ["tan(x)", "-cos(x)", "sec(x)"])]),
         Subject(subjectTitle: "Marvel Super Heroes", description: "spiderman's world", img: #imageLiteral(resourceName: "marvel.jpg"), questionsArray : [Question(question: "What's spiderman's real name?", correctAnswer: "Peter Parker", answerOptions: ["Bruce Wayne", "Clark Kent", "Dick Grayson"])]),
         Subject(subjectTitle: "Science", description: "chemistry, biology, etc", img: #imageLiteral(resourceName: "science.jpg"), questionsArray : [Question(question: "What's entropy?", correctAnswer: "Gradual decline into disorder", answerOptions: ["Heat", "Gradual change to liquid", "Gradual decline into order"])])
     ]

@@ -29,11 +29,11 @@ class QuestionViewController: UIViewController {
         self.allOptionButtons = [option1Button, option2Button, option3Button, option4Button]
         self.submitButton.isEnabled = false
         
-        var question1 = questions[questionIndex]
+        var currentQuestion = questions[questionIndex]
         
-        questionLabel.text = question1.question
-        question1.answerOptions.append(question1.correctAnswer)
-        let allAnswers : [String] = question1.answerOptions
+        questionLabel.text = currentQuestion.question
+        currentQuestion.answerOptions.append(currentQuestion.correctAnswer)
+        let allAnswers : [String] = currentQuestion.answerOptions
         var tempAllOptionButtons : [UIButton] = [option1Button, option2Button, option3Button, option4Button]
         
         //for the four available answers

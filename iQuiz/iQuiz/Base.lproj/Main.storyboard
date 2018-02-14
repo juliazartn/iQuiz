@@ -143,7 +143,7 @@
                                 <state key="normal" title="SUBMIT"/>
                                 <connections>
                                     <action selector="submitClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="Gi5-6h-SXM"/>
-                                    <segue destination="Uf9-Ki-QfU" kind="show" id="h3G-S2-soJ"/>
+                                    <segue destination="Uf9-Ki-QfU" kind="show" identifier="nextQuestionSegue" id="h3G-S2-soJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2o-k5-z2J">
@@ -225,6 +225,9 @@
                                 <rect key="frame" x="181" y="535" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="Uf9-Ki-QfU" eventType="touchUpInside" id="m4N-Ks-dq9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,11 +237,73 @@
                         <outlet property="correctAnswerTextLabel" destination="wsp-Ky-P8E" id="1iR-t6-JvD"/>
                         <outlet property="outcomeTextLabel" destination="bIB-3f-5XY" id="nEc-L5-jTc"/>
                         <outlet property="questionTextLabel" destination="Ghi-Jh-2Zw" id="UrZ-EJ-3ei"/>
+                        <segue destination="Vhu-x7-ysK" kind="show" identifier="finishedSegue" id="maR-AC-gUg"/>
+                        <segue destination="pxB-14-JrG" kind="show" identifier="anotherQuestionSegue" id="rSp-gs-KK8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xee-Cw-413" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1484" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1530" y="133"/>
+        </scene>
+        <!--Finished View Controller-->
+        <scene sceneID="mFG-yn-36Y">
+            <objects>
+                <viewController id="Vhu-x7-ysK" customClass="FinishedViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cEn-wQ-g8d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subject Completed!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNd-5E-drI">
+                                <rect key="frame" x="111" y="81" width="152" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIn-B1-rVR">
+                                <rect key="frame" x="166" y="178" width="50" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="scoretext" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9p-I4-Wno">
+                                <rect key="frame" x="151" y="232" width="72" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMF-tZ-MI9">
+                                <rect key="frame" x="177" y="409" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="vt6-XT-YPA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="performancedescriptiontext" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziO-14-cAJ">
+                                <rect key="frame" x="80" y="127" width="214" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="jTk-Sg-fEk"/>
+                    </view>
+                    <connections>
+                        <outlet property="performanceLabel" destination="ziO-14-cAJ" id="mmX-hz-vpS"/>
+                        <outlet property="scoreLabel" destination="v9p-I4-Wno" id="KrH-XJ-MWv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWC-lx-JwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2237.5999999999999" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="rSp-gs-KK8"/>
+    </inferredMetricsTieBreakers>
 </document>

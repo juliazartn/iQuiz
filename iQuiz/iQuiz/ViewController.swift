@@ -57,10 +57,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let subject = subjects![indexPath.row]
-//        questions = subject.questions
-        
-//        NSLog("User selected row at \(subject.title) and the questions are: \(String(describing: questions))")
+//        _ = subjects![indexPath.row]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

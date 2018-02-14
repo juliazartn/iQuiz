@@ -106,64 +106,119 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpv-OR-cPV">
-                                <rect key="frame" x="16" y="65" width="343" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aod-i2-vWn">
-                                <rect key="frame" x="159" y="194" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Option 1"/>
-                                <connections>
-                                    <action selector="chosenOptionClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="so9-13-feP"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqz-Ss-Cs4">
-                                <rect key="frame" x="158" y="298" width="59" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Option 2"/>
-                                <connections>
-                                    <action selector="chosenOptionClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="lAj-ZC-j5K"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOh-gx-8aj">
-                                <rect key="frame" x="158" y="404" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Option3 "/>
-                                <connections>
-                                    <action selector="chosenOptionClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="xwz-EW-xbe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="POY-5F-Ivd">
-                                <rect key="frame" x="159" y="582" width="56" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="SUBMIT"/>
-                                <connections>
-                                    <action selector="submitClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="Gi5-6h-SXM"/>
-                                    <segue destination="Uf9-Ki-QfU" kind="show" identifier="nextQuestionSegue" id="h3G-S2-soJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2o-k5-z2J">
-                                <rect key="frame" x="158" y="490" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Option 4"/>
-                                <connections>
-                                    <action selector="chosenOptionClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="iPp-lN-qcS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-Fr-wnO">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aL4-et-AnQ">
+                                <rect key="frame" x="0.0" y="65" width="375" height="95.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Question" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpv-OR-cPV">
+                                        <rect key="frame" x="8" y="28.5" width="359" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="359" id="37g-NQ-ScN"/>
+                                            <constraint firstAttribute="height" constant="39" id="LrL-ye-cp2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.83754757729999996" blue="0.85352706519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Dpv-OR-cPV" firstAttribute="centerY" secondItem="aL4-et-AnQ" secondAttribute="centerY" id="Kmp-by-7Gg"/>
+                                    <constraint firstItem="Dpv-OR-cPV" firstAttribute="centerX" secondItem="aL4-et-AnQ" secondAttribute="centerX" id="fSO-aJ-M9I"/>
+                                    <constraint firstAttribute="height" constant="95.5" id="kkH-5p-Jwx"/>
+                                    <constraint firstAttribute="width" constant="375" id="yhi-PE-hQs"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Lfv-Ko-jWm">
+                                <rect key="frame" x="27.5" y="200.5" width="320" height="300"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aod-i2-vWn">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="7mt-Uk-fgX"/>
+                                        </constraints>
+                                        <state key="normal" title="Option 1">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chosenOptionClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="so9-13-feP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqz-Ss-Cs4">
+                                        <rect key="frame" x="0.0" y="86.5" width="320" height="40"/>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="g0v-qP-r9T"/>
+                                        </constraints>
+                                        <state key="normal" title="Option 2">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chosenOptionClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="lAj-ZC-j5K"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOh-gx-8aj">
+                                        <rect key="frame" x="0.0" y="173.5" width="320" height="40"/>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="wsE-W5-znI"/>
+                                        </constraints>
+                                        <state key="normal" title="Option 3 ">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chosenOptionClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="xwz-EW-xbe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2o-k5-z2J">
+                                        <rect key="frame" x="0.0" y="260" width="320" height="40"/>
+                                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="VNb-ee-erq"/>
+                                        </constraints>
+                                        <state key="normal" title="Option 4">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chosenOptionClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="iPp-lN-qcS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="T3e-uz-gL0"/>
+                                    <constraint firstAttribute="width" constant="320" id="Ukv-lT-pIq"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-Fr-wnO">
                                 <rect key="frame" x="16" y="27" width="116" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7tW-a5-y8R"/>
+                                    <constraint firstAttribute="width" constant="116" id="IAp-J7-meR"/>
+                                </constraints>
                                 <state key="normal" title="Back to Subjects"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="emx-MB-c2C"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="POY-5F-Ivd">
+                                <rect key="frame" x="159.5" y="558" width="56" height="30"/>
+                                <state key="normal" title="SUBMIT"/>
+                                <connections>
+                                    <action selector="submitClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="Gi5-6h-SXM"/>
+                                    <segue destination="Uf9-Ki-QfU" kind="show" identifier="answerSegue" id="h3G-S2-soJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aL4-et-AnQ" firstAttribute="top" secondItem="Nqb-Fr-wnO" secondAttribute="bottom" constant="8" id="3wp-fM-Whi"/>
+                            <constraint firstItem="Lfv-Ko-jWm" firstAttribute="centerX" secondItem="4vP-xt-0x2" secondAttribute="centerX" id="4Lb-r9-gLb"/>
+                            <constraint firstItem="Nqb-Fr-wnO" firstAttribute="top" secondItem="cUm-zy-P7M" secondAttribute="top" constant="7" id="4YV-or-tA8"/>
+                            <constraint firstItem="cUm-zy-P7M" firstAttribute="bottom" secondItem="POY-5F-Ivd" secondAttribute="bottom" constant="79" id="NFe-0r-keN"/>
+                            <constraint firstItem="Nqb-Fr-wnO" firstAttribute="leading" secondItem="cUm-zy-P7M" secondAttribute="leading" constant="16" id="b0f-Qa-9oj"/>
+                            <constraint firstItem="POY-5F-Ivd" firstAttribute="centerX" secondItem="4vP-xt-0x2" secondAttribute="centerX" id="bpo-XW-ejC"/>
+                            <constraint firstItem="Lfv-Ko-jWm" firstAttribute="top" secondItem="aL4-et-AnQ" secondAttribute="bottom" constant="40" id="kVV-5o-pc5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cUm-zy-P7M"/>
                     </view>
                     <connections>
@@ -177,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yr1-Zu-ZaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845.60000000000002" y="132.68365817091455"/>
+            <point key="canvasLocation" x="792.79999999999995" y="880.20989505247383"/>
         </scene>
         <!--Answer View Controller-->
         <scene sceneID="t65-7M-3Z5">
@@ -275,13 +330,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="scoretext" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9p-I4-Wno">
-                                <rect key="frame" x="151" y="232" width="72" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMF-tZ-MI9">
                                 <rect key="frame" x="177" y="409" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -292,6 +340,13 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="performancedescriptiontext" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziO-14-cAJ">
                                 <rect key="frame" x="80" y="127" width="214" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="scoretext" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9p-I4-Wno">
+                                <rect key="frame" x="16" y="223" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -312,6 +367,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="h3G-S2-soJ"/>
         <segue reference="rSp-gs-KK8"/>
         <segue reference="emx-MB-c2C"/>
     </inferredMetricsTieBreakers>

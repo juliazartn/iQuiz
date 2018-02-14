@@ -10,6 +10,7 @@ import UIKit
 
 class QuestionViewController: UIViewController {
     
+    var score : Int = 0
     var questions : [Question] = []
     var questionIndex : Int = 0
     var chosenButtonNumber : Int? = nil
@@ -73,5 +74,6 @@ class QuestionViewController: UIViewController {
         answerView.questions = questions
         answerView.questionIndex = questionIndex
         answerView.selectedAnswerText = (allOptionButtons[chosenButtonNumber!].titleLabel?.text)!
+        answerView.score = score
     }
 }

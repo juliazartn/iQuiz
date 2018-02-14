@@ -13,6 +13,7 @@ class AnswerViewController: UIViewController {
     var questions : [Question] = []
     var questionIndex : Int = 0
     var selectedAnswerText : String? = nil
+    var score : Int = 0
     
     @IBOutlet weak var questionTextLabel: UILabel!
     @IBOutlet weak var correctAnswerTextLabel: UILabel!
@@ -27,6 +28,7 @@ class AnswerViewController: UIViewController {
         if questions[questionIndex].correctAnswer == selectedAnswerText {
             outcomeTextLabel.textColor = UIColor.green
             outcomeTextLabel.text = "Correct!"
+            score = score + 1
         } else {
             outcomeTextLabel.textColor = UIColor.red
             outcomeTextLabel.text = "Wrong :("
@@ -37,10 +39,8 @@ class AnswerViewController: UIViewController {
 
     @IBAction func nextButtonPressed(_ sender: Any) {
         if questionIndex == questions.count - 1 {
-            NSLog("moving to finished segue")
             self.performSegue(withIdentifier: "finishedSegue", sender: nil)
         } else {
-            NSLog("moving to next question")
             self.performSegue(withIdentifier: "anotherQuestionSegue", sender: nil)
         }
     }
@@ -56,10 +56,12 @@ class AnswerViewController: UIViewController {
             let questionView = segue.destination as! QuestionViewController
             questionView.questions = questions
             questionView.questionIndex = questionIndex + 1
+            questionView.score = score
         }
         else {
             let finishedView = segue.destination as! FinishedViewController
-//            finishedView.questions = questions
+            finishedView.totalQuestions = questions.count
+            finishedView.score = score
         }
     }
 }

@@ -154,6 +154,14 @@
                                     <action selector="chosenOptionClicked:" destination="pxB-14-JrG" eventType="touchUpInside" id="iPp-lN-qcS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqb-Fr-wnO">
+                                <rect key="frame" x="16" y="27" width="116" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back to Subjects"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="emx-MB-c2C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="cUm-zy-P7M"/>
@@ -243,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xee-Cw-413" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1530" y="133"/>
+            <point key="canvasLocation" x="1518" y="133"/>
         </scene>
         <!--Finished View Controller-->
         <scene sceneID="mFG-yn-36Y">
@@ -305,5 +313,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="rSp-gs-KK8"/>
+        <segue reference="emx-MB-c2C"/>
     </inferredMetricsTieBreakers>
 </document>

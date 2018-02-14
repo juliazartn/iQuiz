@@ -58,16 +58,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let subject = subjects![indexPath.row]
-        questions = subject.questions
+//        questions = subject.questions
         
-        NSLog("User selected row at \(subject.title) and the questions are: \(String(describing: questions))")
+//        NSLog("User selected row at \(subject.title) and the questions are: \(String(describing: questions))")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let questionView = segue.destination as! QuestionViewController
-        NSLog("preparing the questions: \(questions)")
-        tblSubjects.indexPathForSelectedRow?.row
-        questionView.questions = questions
+        let subject = subjects![(tblSubjects.indexPathForSelectedRow?.row)!]
+        questionView.questions = subject.questions
+        NSLog("preparing the questions: \(subject.questions)")
+
     }
 
 

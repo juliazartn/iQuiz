@@ -18,6 +18,7 @@ class AnswerViewController: UIViewController {
     @IBOutlet weak var questionTextLabel: UILabel!
     @IBOutlet weak var correctAnswerTextLabel: UILabel!
     @IBOutlet weak var outcomeTextLabel: UILabel!
+    @IBOutlet weak var outcomeViewBox: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +27,12 @@ class AnswerViewController: UIViewController {
         correctAnswerTextLabel.text = questions[questionIndex].correctAnswer
         
         if questions[questionIndex].correctAnswer == selectedAnswerText {
-            outcomeTextLabel.textColor = UIColor.green
+            outcomeViewBox.backgroundColor = UIColor.blue
             outcomeTextLabel.text = "Correct!"
             score = score + 1
         } else {
-            outcomeTextLabel.textColor = UIColor.red
-            outcomeTextLabel.text = "Wrong :("
+            outcomeViewBox.backgroundColor = UIColor.orange
+            outcomeTextLabel.text = "Wrong"
         }
 
         // Do any additional setup after loading the view.

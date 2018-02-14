@@ -61,6 +61,7 @@
                                                 <constraint firstItem="GZA-KL-gva" firstAttribute="top" secondItem="Dwu-eq-TIf" secondAttribute="bottom" constant="8" id="OQm-8P-2fe"/>
                                                 <constraint firstItem="GZA-KL-gva" firstAttribute="trailing" secondItem="R0S-fH-Mxp" secondAttribute="trailingMargin" id="Vt1-9W-KUZ"/>
                                                 <constraint firstItem="Dwu-eq-TIf" firstAttribute="trailing" secondItem="R0S-fH-Mxp" secondAttribute="trailingMargin" id="qac-J1-okW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fv5-3z-t0q" secondAttribute="bottom" constant="7" id="qxJ-tn-0oj"/>
                                                 <constraint firstItem="Dwu-eq-TIf" firstAttribute="top" secondItem="R0S-fH-Mxp" secondAttribute="topMargin" id="sep-Cf-5eg"/>
                                                 <constraint firstItem="GZA-KL-gva" firstAttribute="leading" secondItem="R0S-fH-Mxp" secondAttribute="leadingMargin" constant="100" id="tP2-Ob-0zu"/>
                                             </constraints>
@@ -69,6 +70,7 @@
                                             <outlet property="subjectDescription" destination="GZA-KL-gva" id="tzP-3f-l5F"/>
                                             <outlet property="subjectImageView" destination="fv5-3z-t0q" id="gaE-n4-2n5"/>
                                             <outlet property="subjectTitle" destination="Dwu-eq-TIf" id="N45-li-61x"/>
+                                            <segue destination="pxB-14-JrG" kind="show" id="OUK-6q-LkT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -95,6 +97,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+        <!--Question View Controller-->
+        <scene sceneID="VRr-Ho-h2Q">
+            <objects>
+                <viewController id="pxB-14-JrG" customClass="QuestionViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4vP-xt-0x2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aod-i2-vWn">
+                                <rect key="frame" x="159" y="194" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Option 1"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqz-Ss-Cs4">
+                                <rect key="frame" x="158" y="298" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Option 2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOh-gx-8aj">
+                                <rect key="frame" x="158" y="404" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Option3 "/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2o-k5-z2J">
+                                <rect key="frame" x="157" y="514" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Option 4"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpv-OR-cPV">
+                                <rect key="frame" x="153" y="67" width="69" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="cUm-zy-P7M"/>
+                    </view>
+                    <connections>
+                        <outlet property="option1Button" destination="Aod-i2-vWn" id="zuc-zU-0IW"/>
+                        <outlet property="option2Button" destination="cqz-Ss-Cs4" id="WQh-AE-zGf"/>
+                        <outlet property="option3Button" destination="fOh-gx-8aj" id="zw2-XI-iWT"/>
+                        <outlet property="option4Button" destination="y2o-k5-z2J" id="bu2-zh-4wE"/>
+                        <outlet property="questionLabel" destination="Dpv-OR-cPV" id="krq-4p-91H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yr1-Zu-ZaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="847" y="133"/>
         </scene>
     </scenes>
 </document>

@@ -53,7 +53,7 @@ class SubjectRepository {
                 try (json as NSArray).write(to: fileURL)
               
                 
-                //resume
+                //for each subject in json file..
                 for item in json {
                     var subjectQ : [Question] = []
                     
@@ -79,12 +79,6 @@ class SubjectRepository {
         }
         task.resume()
         sema.wait()
-    }
-    
-    private func createSubjects() -> [Subject]{
-        var webSubjects : [Subject] = []
-        
-        return webSubjects
     }
     
     func getSubjects() -> [Subject] {

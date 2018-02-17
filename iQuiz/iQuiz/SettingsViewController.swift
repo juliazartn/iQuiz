@@ -18,6 +18,10 @@ class SettingsViewController: UIViewController {
         URLTextField.text = "https://tednewardsandbox.site44.com/questions.json"
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func checkNowClicked(_ sender: Any) {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

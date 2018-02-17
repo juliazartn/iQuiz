@@ -34,11 +34,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func settingsPushed(_ sender: Any) {
-        let alert = UIAlertController(title: "Settings Alert", message: "Settings go here", preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "Settings Alert", message: "Settings go here", preferredStyle: UIAlertControllerStyle.alert)
+//
+//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+//
+//        self.present(alert, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "settingsSegue", sender: nil)
     }
     
     override func viewDidLoad() {
@@ -58,14 +59,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        _ = subjects![indexPath.row]
+        self.performSegue(withIdentifier: "subjectsSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let questionView = segue.destination as! QuestionViewController
-        let subject = subjects![(tblSubjects.indexPathForSelectedRow?.row)!]
-        questionView.questions = subject.questions
-//        NSLog("preparing the questions: \(subject.questions)")
-
+        if segue.identifier == "subjectsSegue" {
+            let questionView = segue.destination as! QuestionViewController
+            let subject = subjects![(tblSubjects.indexPathForSelectedRow?.row)!]
+            questionView.questions = subject.questions
+    //        NSLog("preparing the questions: \(subject.questions)")
+        }
     }
 
 

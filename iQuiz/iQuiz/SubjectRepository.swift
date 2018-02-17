@@ -49,8 +49,11 @@ class SubjectRepository {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [[String: AnyObject]]
                 
+                let fileURL = URL(fileURLWithPath: NSHomeDirectory() + "/Documents/json")
+                try (json as NSArray).write(to: fileURL)
+              
                 
-                
+                //resume
                 for item in json {
                     var subjectQ : [Question] = []
                     

@@ -35,50 +35,8 @@ class SubjectRepository {
     private var subjects : [Subject]
     
     init() {
-        let urlString : String = "https://tednewardsandbox.site44.com/questions.json"
-        let url = NSURL(string: urlString)!
-        let urlRequest = URLRequest(url: url as URL)
         self.subjects = []
-        
-        let sema = DispatchSemaphore(value: 0);
-        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) -> Void in
-            if error != nil {
-                print(error ?? "URLSession error")
-                return
-            }
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [[String: AnyObject]]
-                
-                let fileURL = URL(fileURLWithPath: NSHomeDirectory() + "/Documents/json")
-                try (json as NSArray).write(to: fileURL)
-              
-                
-                //for each subject in json file..
-                for item in json {
-                    var subjectQ : [Question] = []
-                    
-                    let questionsArray = item["questions"] as? [AnyObject]
-                    for question in questionsArray! {
-                        let questionText = question["text"]
-                        let questionAnswerIndex = (question["answer"] as! NSString).integerValue
-                        var questionAnswers = question["answers"] as? [AnyObject]
-                        let correctAnswer = questionAnswers!.remove(at: questionAnswerIndex-1)
-                        subjectQ.append(Question(question: questionText as! String, correctAnswer: correctAnswer as! String, answerOptions: questionAnswers! as! [String]))
-                    }
-                    
-                    let subjectImageName : String = ((item["title"] as! NSString) as String) + ".jpg"
-                    let subjectImage = UIImage(named: subjectImageName)!
-                    
-                    
-                    self.subjects.append(Subject(subjectTitle: item["title"] as! String, description: item["desc"] as! String, img: subjectImage, questionsArray: subjectQ))
-                }
-            } catch let jsonError {
-                print(jsonError)
-            }
-            sema.signal();
-        }
-        task.resume()
-        sema.wait()
+        createSubjects(url: "https://tednewardsandbox.site44.com/questions.json")
     }
     
     func getSubjects() -> [Subject] {
@@ -89,6 +47,74 @@ class SubjectRepository {
         return subjects[id]
     }
     
+    func setURL(url : String) {
+        createSubjects(url: url)
+    }
+    
+    private func createSubjects(url: String) {
+        let url = NSURL(string: url)!
+        let urlRequest = URLRequest(url: url as URL)
+        self.subjects = []
+        
+        let sema = DispatchSemaphore(value: 0);
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) -> Void in
+            if error != nil {
+                NSLog("Problem connecting to internet. Getting data from local file.")
+                self.getLocalData()
+                sema.signal()
+                print(error ?? "URLSession error")
+                return
+            }
+            self.parseJSON(data: data!)
+            sema.signal();
+        }
+        task.resume()
+        sema.wait()
+    }
+    
+    private func getLocalData() {
+        do {
+            let fileURLString = NSHomeDirectory() + "/Documents/json"
+            let jsonData = NSArray(contentsOfFile: fileURLString)
+            let data = try JSONSerialization.data(withJSONObject:jsonData!)
+            self.parseJSON(data: data)
+        } catch {
+            print("JSON serialization failed: ", error)
+        }
+    }
+    
+    private func parseJSON(data : Data) {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [[String: AnyObject]]
+            
+            //write data
+            let fileURLString = NSHomeDirectory() + "/Documents/json"
+            let fileURL = URL(fileURLWithPath: fileURLString)
+            try (json as NSArray).write(to: fileURL)
+            
+            //for each subject in json file..
+            for item in json {
+                var subjectQ : [Question] = []
+                
+                let questionsArray = item["questions"] as? [AnyObject]
+                for question in questionsArray! {
+                    let questionText = question["text"]
+                    let questionAnswerIndex = (question["answer"] as! NSString).integerValue
+                    var questionAnswers = question["answers"] as? [AnyObject]
+                    let correctAnswer = questionAnswers!.remove(at: questionAnswerIndex-1)
+                    subjectQ.append(Question(question: questionText as! String, correctAnswer: correctAnswer as! String, answerOptions: questionAnswers! as! [String]))
+                }
+                
+                let subjectImageName : String = ((item["title"] as! NSString) as String) + ".jpg"
+                let subjectImage = UIImage(named: subjectImageName)!
+                
+                
+                self.subjects.append(Subject(subjectTitle: item["title"] as! String, description: item["desc"] as! String, img: subjectImage, questionsArray: subjectQ))
+            }
+        } catch let jsonError {
+            print(jsonError)
+        }
+    }
     
 //    private let subjects : [Subject] = [
 //        Subject(subjectTitle: "Mathematics", description: "numbers and stuff", img: #imageLiteral(resourceName: "math"), questionsArray : [Question(question: "What's 1 + 1", correctAnswer: "2", answerOptions: ["3", "-1", "4"]),

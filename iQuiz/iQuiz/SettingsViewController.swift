@@ -12,6 +12,8 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var URLTextField: UITextField!
     
+    var subjectRepo : SubjectRepository? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,7 +22,8 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func checkNowClicked(_ sender: Any) {
-        
+        //update subjects with new information
+        subjectRepo?.setURL(url: URLTextField.text!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,10 +36,13 @@ class SettingsViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let mainView = segue.destination as! ViewController
+        mainView.subjectRepo = subjectRepo!
     }
-    */
 
 }

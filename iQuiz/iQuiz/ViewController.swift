@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tblSubjects: UITableView!
     
-    let subjectRepo = SubjectRepository.shared
+    var subjectRepo = SubjectRepository.shared
     var subjects : [Subject]? = nil
     var questions : [Question] = []
     
@@ -68,6 +68,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let subject = subjects![(tblSubjects.indexPathForSelectedRow?.row)!]
             questionView.questions = subject.questions
     //        NSLog("preparing the questions: \(subject.questions)")
+        } else if segue.identifier == "settingsSegue" {
+            let settingsView = segue.destination as! SettingsViewController
+            settingsView.subjectRepo = self.subjectRepo
         }
     }
 

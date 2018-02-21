@@ -14,6 +14,7 @@ class QuestionViewController: UIViewController {
     var questions : [Question] = []
     var questionIndex : Int = 0
     var chosenButtonNumber : Int? = nil
+   
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var option1Button: UIButton!
@@ -61,7 +62,12 @@ class QuestionViewController: UIViewController {
         self.submitButton.isEnabled = true
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        performSegue(withIdentifier: "questionToMainSegue", sender: nil)
+    }
+    
     @IBAction func submitClicked(_ sender: Any) {
+        performSegue(withIdentifier: "answerSegue", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,4 +84,6 @@ class QuestionViewController: UIViewController {
             answerView.score = score
         }
     }
+    
+  
 }

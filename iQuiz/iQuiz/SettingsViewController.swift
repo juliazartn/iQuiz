@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SystemConfiguration
 
 class SettingsViewController: UIViewController {
 
@@ -22,8 +23,14 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func checkNowClicked(_ sender: Any) {
-        //update subjects with new information
-        subjectRepo?.setURL(url: URLTextField.text!)
+        let connected = self.isConnectedToNetwork()
+        if connected {
+            subjectRepo?.setURL(url: URLTextField.text!)
+        } else {
+            let alert = UIAlertController(title: "Network Alert", message: "Network is not available", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,5 +51,34 @@ class SettingsViewController: UIViewController {
         let mainView = segue.destination as! ViewController
         mainView.subjectRepo = subjectRepo!
     }
+    
+    
+    func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+        return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
+    }
+    
+    private func isConnectedToNetwork() -> Bool {
+        
+        guard let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com") else { return false }
+        var flags = SCNetworkReachabilityFlags()
+        SCNetworkReachabilityGetFlags(reachability, &flags)
+        if !isNetworkReachable(with: flags) {
+            // Device doesn't have internet connection
+            return false
+        }
+        #if os(iOS)
+            // It's available just for iOS because it's checking if the device is using mobile data
+            if flags.contains(.isWWAN) {
+                // Device is using mobile data
+                return true
+            }
+        #endif
+        // At this point we are sure that the device is using Wifi since it's online and without using mobil
+        return true
 
+    }
 }

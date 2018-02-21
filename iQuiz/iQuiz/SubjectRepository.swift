@@ -61,8 +61,8 @@ class SubjectRepository {
             if error != nil {
                 NSLog("Problem connecting to internet. Getting data from local file.")
                 self.getLocalData()
+//                print(error ?? "URLSession error")
                 sema.signal()
-                print(error ?? "URLSession error")
                 return
             }
             self.parseJSON(data: data!)
@@ -112,6 +112,7 @@ class SubjectRepository {
                 self.subjects.append(Subject(subjectTitle: item["title"] as! String, description: item["desc"] as! String, img: subjectImage, questionsArray: subjectQ))
             }
         } catch let jsonError {
+            NSLog("Problem downloading!")
             print(jsonError)
         }
     }

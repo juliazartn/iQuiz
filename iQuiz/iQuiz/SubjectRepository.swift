@@ -52,6 +52,7 @@ class SubjectRepository {
     }
     
     private func createSubjects(url: String) {
+        var correctlyUpdated = false
         let url = NSURL(string: url)!
         let urlRequest = URLRequest(url: url as URL)
         self.subjects = []
@@ -65,11 +66,24 @@ class SubjectRepository {
                 sema.signal()
                 return
             }
-            self.parseJSON(data: data!)
-            sema.signal();
+            correctlyUpdated = self.parseJSON(data: data!)
+            sema.signal()
+//            if self.parseJSON(data: data!) {
+//                sema.signal()
+//                correctlyUpdated = true
+//            } else {
+//                correctlyUpdated = false
+//                sema.signal()
+//            }
         }
         task.resume()
         sema.wait()
+        if correctlyUpdated {
+            NSLog("Updated subjects!")
+        } else {
+            self.createSubjects(url: "https://tednewardsandbox.site44.com/questions.json")
+            NSLog("Problem with updating subjects. Updated subjects with default URL")
+        }
     }
     
     private func getLocalData() {
@@ -83,37 +97,43 @@ class SubjectRepository {
         }
     }
     
-    private func parseJSON(data : Data) {
+    private func parseJSON(data : Data) -> Bool {
         do {
-            let json = try JSONSerialization.jsonObject(with: data, options: []) as! [[String: AnyObject]]
+            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: AnyObject]] {
             
-            //write data
-            let fileURLString = NSHomeDirectory() + "/Documents/json"
-            let fileURL = URL(fileURLWithPath: fileURLString)
-            try (json as NSArray).write(to: fileURL)
-            
-            //for each subject in json file..
-            for item in json {
-                var subjectQ : [Question] = []
+                //write data
+                let fileURLString = NSHomeDirectory() + "/Documents/json"
+                let fileURL = URL(fileURLWithPath: fileURLString)
+                try (json as NSArray).write(to: fileURL)
                 
-                let questionsArray = item["questions"] as? [AnyObject]
-                for question in questionsArray! {
-                    let questionText = question["text"]
-                    let questionAnswerIndex = (question["answer"] as! NSString).integerValue
-                    var questionAnswers = question["answers"] as? [AnyObject]
-                    let correctAnswer = questionAnswers!.remove(at: questionAnswerIndex-1)
-                    subjectQ.append(Question(question: questionText as! String, correctAnswer: correctAnswer as! String, answerOptions: questionAnswers! as! [String]))
+                //for each subject in json file..
+                for item in json {
+                    var subjectQ : [Question] = []
+                    
+                    let questionsArray = item["questions"] as? [AnyObject]
+                    for question in questionsArray! {
+                        let questionText = question["text"]
+                        let questionAnswerIndex = (question["answer"] as! NSString).integerValue
+                        var questionAnswers = question["answers"] as? [AnyObject]
+                        let correctAnswer = questionAnswers!.remove(at: questionAnswerIndex-1)
+                        subjectQ.append(Question(question: questionText as! String, correctAnswer: correctAnswer as! String, answerOptions: questionAnswers! as! [String]))
+                    }
+                    
+                    let subjectImageName : String = ((item["title"] as! NSString) as String) + ".jpg"
+                    let subjectImage = UIImage(named: subjectImageName)!
+                    
+                    
+                    self.subjects.append(Subject(subjectTitle: item["title"] as! String, description: item["desc"] as! String, img: subjectImage, questionsArray: subjectQ))
                 }
-                
-                let subjectImageName : String = ((item["title"] as! NSString) as String) + ".jpg"
-                let subjectImage = UIImage(named: subjectImageName)!
-                
-                
-                self.subjects.append(Subject(subjectTitle: item["title"] as! String, description: item["desc"] as! String, img: subjectImage, questionsArray: subjectQ))
+                return true
+            } else {
+                NSLog("invalid response")
+                return false
             }
         } catch let jsonError {
             NSLog("Problem downloading!")
             print(jsonError)
+            return false
         }
     }
     

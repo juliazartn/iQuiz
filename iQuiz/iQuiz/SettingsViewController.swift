@@ -26,6 +26,7 @@ class SettingsViewController: UIViewController {
         let connected = self.isConnectedToNetwork()
         if connected {
             subjectRepo?.setURL(url: URLTextField.text!)
+            
         } else {
             let alert = UIAlertController(title: "Network Alert", message: "Network is not available", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))

@@ -121,7 +121,14 @@ class SubjectRepository {
                     }
                     
                     let subjectImageName : String = ((item["title"] as! NSString) as String) + ".jpg"
-                    let subjectImage = UIImage(named: subjectImageName)!
+//                    let subjectImage = UIImage(named: subjectImageName)!
+                    var subjectImage : UIImage
+                    
+                    if UIImage(named: subjectImageName) != nil {
+                        subjectImage = UIImage(named: subjectImageName)!
+                    } else {
+                        subjectImage = #imageLiteral(resourceName: "defaultQIcon.jpg")
+                    }
                     
                     
                     self.subjects.append(Subject(subjectTitle: item["title"] as! String, description: item["desc"] as! String, img: subjectImage, questionsArray: subjectQ))

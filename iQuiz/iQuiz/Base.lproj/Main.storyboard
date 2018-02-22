@@ -87,8 +87,8 @@
                                 <rect key="frame" x="16" y="73" width="343" height="574"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="Sna-VM-Lz2"/>
-                                    <constraint firstAttribute="height" constant="574" id="U7i-R4-j7q"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="343" id="Sna-VM-Lz2"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="574" id="U7i-R4-j7q"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubjectCell" rowHeight="109" id="MEL-Ro-Nyj" customClass="SubjectTableViewCell" customModule="iQuiz" customModuleProvider="target">
@@ -114,7 +114,7 @@
                                                     <rect key="frame" x="15" y="11" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="Exh-Uv-QiS"/>
-                                                        <constraint firstAttribute="height" constant="80" id="drN-Mt-4yL"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="drN-Mt-4yL"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -130,7 +130,7 @@
                                                 <constraint firstItem="Dwu-eq-TIf" firstAttribute="trailing" secondItem="R0S-fH-Mxp" secondAttribute="trailingMargin" id="qac-J1-okW"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="fv5-3z-t0q" secondAttribute="bottom" constant="7" id="qxJ-tn-0oj"/>
                                                 <constraint firstItem="Dwu-eq-TIf" firstAttribute="top" secondItem="R0S-fH-Mxp" secondAttribute="topMargin" id="sep-Cf-5eg"/>
-                                                <constraint firstItem="GZA-KL-gva" firstAttribute="leading" secondItem="R0S-fH-Mxp" secondAttribute="leadingMargin" constant="100" id="tP2-Ob-0zu"/>
+                                                <constraint firstItem="GZA-KL-gva" firstAttribute="leading" relation="lessThanOrEqual" secondItem="R0S-fH-Mxp" secondAttribute="leadingMargin" constant="100" id="tP2-Ob-0zu"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -145,7 +145,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7N-no-Hyf">
                                 <rect key="frame" x="16" y="29" width="343" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="8lK-qZ-an9"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="343" id="8lK-qZ-an9"/>
                                     <constraint firstAttribute="height" constant="44" id="9Q4-Dr-48f"/>
                                 </constraints>
                                 <items>
@@ -159,10 +159,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="avI-Bl-GSg" secondAttribute="trailing" constant="16" id="6kA-Ls-CI0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="avI-Bl-GSg" secondAttribute="trailing" constant="16" id="6kA-Ls-CI0"/>
                             <constraint firstItem="I7N-no-Hyf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="WvG-SU-dDp"/>
                             <constraint firstItem="I7N-no-Hyf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="c3u-tU-Gqg"/>
-                            <constraint firstItem="avI-Bl-GSg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="op1-On-u7F"/>
+                            <constraint firstItem="avI-Bl-GSg" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="op1-On-u7F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="avI-Bl-GSg" secondAttribute="bottom" constant="20" id="pV9-uy-1nQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I7N-no-Hyf" secondAttribute="trailing" constant="16" id="ret-5e-J3Z"/>
                             <constraint firstItem="avI-Bl-GSg" firstAttribute="top" secondItem="I7N-no-Hyf" secondAttribute="bottom" id="sQz-aX-C6s"/>
@@ -548,7 +548,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UCO-Lv-L6r"/>
         <segue reference="rSp-gs-KK8"/>
         <segue reference="G4i-3H-3f0"/>
     </inferredMetricsTieBreakers>

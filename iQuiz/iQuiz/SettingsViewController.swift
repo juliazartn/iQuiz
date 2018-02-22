@@ -14,11 +14,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var URLTextField: UITextField!
     
     var subjectRepo : SubjectRepository? = nil
+    var currentURL : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        URLTextField.text = "https://tednewardsandbox.site44.com/questions.json"
+        URLTextField.text = currentURL
         // Do any additional setup after loading the view.
     }
     
@@ -28,6 +28,7 @@ class SettingsViewController: UIViewController {
         if connected {
             if (subjectRepo?.setURL(url: URLTextField.text!))! {
                 alert = UIAlertController(title: "Success!", message: "Successfully updated data from URL", preferredStyle: UIAlertControllerStyle.alert)
+                currentURL = URLTextField.text!
             } else {
                 alert = UIAlertController(title: "Problem!", message: "Download from URL unsuccessful. Check URL", preferredStyle: UIAlertControllerStyle.alert)
             }
@@ -55,6 +56,7 @@ class SettingsViewController: UIViewController {
         // Pass the selected object to the new view controller.
         let mainView = segue.destination as! ViewController
         mainView.subjectRepo = subjectRepo!
+        mainView.currentURL = self.currentURL
     }
     
     

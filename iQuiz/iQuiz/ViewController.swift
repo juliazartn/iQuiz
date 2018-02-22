@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var subjectRepo = SubjectRepository.shared
     var subjects : [Subject]? = nil
     var questions : [Question] = []
+    var currentURL : String = "https://tednewardsandbox.site44.com/questions.json"
     
     //return number of subjects
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,6 +72,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else if segue.identifier == "settingsSegue" {
             let settingsView = segue.destination as! SettingsViewController
             settingsView.subjectRepo = self.subjectRepo
+            settingsView.currentURL = self.currentURL
         }
     }
 

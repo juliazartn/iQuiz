@@ -24,14 +24,18 @@ class SettingsViewController: UIViewController {
     
     @IBAction func checkNowClicked(_ sender: Any) {
         let connected = self.isConnectedToNetwork()
+        let alert : UIAlertController
         if connected {
-            subjectRepo?.setURL(url: URLTextField.text!)
-            
+            if (subjectRepo?.setURL(url: URLTextField.text!))! {
+                alert = UIAlertController(title: "Success!", message: "Successfully updated data from URL", preferredStyle: UIAlertControllerStyle.alert)
+            } else {
+                alert = UIAlertController(title: "Problem!", message: "Download from URL unsuccessful. Check URL", preferredStyle: UIAlertControllerStyle.alert)
+            }
         } else {
-            let alert = UIAlertController(title: "Network Alert", message: "Network is not available", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            alert = UIAlertController(title: "Network Alert", message: "Network is not available", preferredStyle: UIAlertControllerStyle.alert)
         }
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -47,11 +47,11 @@ class SubjectRepository {
         return subjects[id]
     }
     
-    func setURL(url : String) {
-        createSubjects(url: url)
+    func setURL(url : String) -> Bool {
+        return createSubjects(url: url)
     }
     
-    private func createSubjects(url: String) {
+    private func createSubjects(url: String) -> Bool {
         var correctlyUpdated = false
         let url = NSURL(string: url)!
         let urlRequest = URLRequest(url: url as URL)
@@ -84,6 +84,7 @@ class SubjectRepository {
             self.createSubjects(url: "https://tednewardsandbox.site44.com/questions.json")
             NSLog("Problem with updating subjects. Updated subjects with default URL")
         }
+        return correctlyUpdated
     }
     
     private func getLocalData() {
